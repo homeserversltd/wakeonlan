@@ -1,0 +1,33 @@
+{
+  "name": "wakeonlan",
+  "files": [
+    {
+      "source": "frontend/index.tsx",
+      "target": "/var/www/homeserver/src/tablets/wakeonlan/index.tsx",
+      "type": "copy",
+      "identifier": null,
+      "description": "Main React entry point for wakeonlan tablet"
+    },
+    {
+      "source": "frontend/types.ts",
+      "target": "/var/www/homeserver/src/tablets/wakeonlan/types.ts",
+      "type": "copy",
+      "identifier": null,
+      "description": "TypeScript types"
+    },
+    {
+      "source": "frontend/PortalCard.css",
+      "target": "/var/www/homeserver/src/tablets/wakeonlan/PortalCard.css",
+      "type": "copy",
+      "identifier": null,
+      "description": "Tablet CSS"
+    },
+    {
+      "source": "frontend/hooks/useWakeonlanControls.ts",
+      "target": "/var/www/homeserver/src/tablets/wakeonlan/hooks/useWakeonlanControls.ts",
+      "type": "copy",
+      "identifier": null,
+      "description": "Hook for WoL API"
+    }
+  ]
+}

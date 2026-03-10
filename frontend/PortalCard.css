@@ -1,0 +1,112 @@
+.wakeonlan-tablet {
+  padding: 1rem;
+}
+
+.wakeonlan-tablet .wakeonlan-targets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wakeonlan-tablet .wakeonlan-target-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: var(--surface);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.wakeonlan-tablet .wakeonlan-target-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.wakeonlan-tablet .wakeonlan-target-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.wakeonlan-tablet .wakeonlan-target-mac {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-family: monospace;
+}
+
+.wakeonlan-tablet .wakeonlan-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.wakeonlan-tablet .wakeonlan-message {
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.wakeonlan-tablet .wakeonlan-message.error {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.wakeonlan-tablet .wakeonlan-empty {
+  color: var(--text-muted);
+  padding: 1rem;
+}
+
+.wakeonlan-tablet .wakeonlan-section {
+  margin-top: 1.5rem;
+}
+
+.wakeonlan-tablet .wakeonlan-section h3 {
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.wakeonlan-tablet .wakeonlan-target-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.wakeonlan-tablet .wakeonlan-leases {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wakeonlan-tablet .wakeonlan-lease-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: var(--surface);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.wakeonlan-tablet .wakeonlan-lease-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.wakeonlan-tablet .wakeonlan-lease-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.wakeonlan-tablet .wakeonlan-lease-details {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-family: monospace;
+}

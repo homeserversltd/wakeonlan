@@ -1,0 +1,19 @@
+{
+  "name": "wakeonlan",
+  "version": "1.0.0",
+  "metadata": {
+    "description": "Wake-on-LAN premium tab backend configuration"
+  },
+  "paths": {
+    "wol_csv": "/var/www/homeserver/premium/wakeonlan.csv"
+  },
+  "files": [
+    {
+      "source": "backend/__init__.py",
+      "target": "/var/www/homeserver/backend/__init__.py",
+      "type": "append",
+      "identifier": "wakeonlan",
+      "description": "Blueprint registration injection point for wakeonlan premium tab"
+    }
+  ]
+}

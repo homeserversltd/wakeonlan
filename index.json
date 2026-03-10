@@ -1,0 +1,24 @@
+{
+  "name": "wakeonlan",
+  "version": "1.0.0",
+  "files": {
+    "config": "homeserver.patch.json",
+    "readme": "README.md",
+    "backend": {
+      "index": "backend/index.json",
+      "config": "backend/config.json",
+      "requirements": "backend/requirements.txt",
+      "init": "backend/__init__.py",
+      "routes": "backend/routes.py",
+      "wol": "backend/wol.py"
+    },
+    "frontend": {
+      "index": "frontend/index.json",
+      "package": "frontend/package.patch.json",
+      "entry": "frontend/index.tsx",
+      "types": "frontend/types.ts",
+      "styles": "frontend/PortalCard.css",
+      "useWakeonlanControls": "frontend/hooks/useWakeonlanControls.ts"
+    }
+  }
+}

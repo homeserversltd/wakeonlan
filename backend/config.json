@@ -1,0 +1,9 @@
+{
+  "metadata": {
+    "name": "wakeonlan",
+    "description": "Wake-on-LAN tab config (infinite-index style paths)"
+  },
+  "paths": {
+    "wol_csv": "/var/www/homeserver/premium/wakeonlan.csv"
+  }
+}
