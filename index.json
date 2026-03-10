@@ -4,6 +4,7 @@
   "files": {
     "config": "homeserver.patch.json",
     "readme": "README.md",
+    "license": "LICENSE",
     "backend": {
       "index": "backend/index.json",
       "config": "backend/config.json",

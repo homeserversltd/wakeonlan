@@ -1,17 +1,22 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './PortalCard.css';
 import { createComponentLogger } from '../../../src/utils/debug';
-import { Button } from '../../../src/components/ui';
+import { Button, Checkbox } from '../../../src/components/ui';
 import { useWakeonlanControls } from './hooks/useWakeonlanControls';
 import type { WolTarget, DhcpLease } from './types';
 
 const logger = createComponentLogger('WakeonlanTablet');
+
+const maskMac = (mac: string, anonymize: boolean): string => {
+  return anonymize ? '••:••:••:••:••:••' : mac;
+};
 
 const WakeonlanTablet: React.FC = () => {
   const { getTargets, wake, wakeAll, getLeases, addTarget, removeTarget, isLoading, error } = useWakeonlanControls();
   const [targets, setTargets] = useState<WolTarget[]>([]);
   const [leases, setLeases] = useState<DhcpLease[]>([]);
   const [message, setMessage] = useState<string | null>(null);
+  const [anonymizeMacs, setAnonymizeMacs] = useState(false);
 
   const loadTargets = useCallback(async () => {
     try {
@@ -104,6 +109,12 @@ const WakeonlanTablet: React.FC = () => {
       <h2>Wake on LAN</h2>
       <p>Targets from <code>premium/wakeonlan.csv</code>. One tap to send magic packet from phone over Tailscale.</p>
 
+      <Checkbox
+        label="Anonymize MAC addresses"
+        checked={anonymizeMacs}
+        onChange={setAnonymizeMacs}
+      />
+
       {error && (
         <div className="wakeonlan-message error">{error}</div>
       )}
@@ -122,7 +133,7 @@ const WakeonlanTablet: React.FC = () => {
                 <li key={t.name} className="wakeonlan-target-item">
                   <div className="wakeonlan-target-info">
                     <span className="wakeonlan-target-name">{t.name}</span>
-                    <div className="wakeonlan-target-mac">{t.mac}</div>
+                    <div className="wakeonlan-target-mac">{maskMac(t.mac, anonymizeMacs)}</div>
                   </div>
                   <div className="wakeonlan-target-actions">
                     <Button variant="primary" onClick={() => handleWake(t.name)} disabled={isLoading}>
@@ -160,7 +171,7 @@ const WakeonlanTablet: React.FC = () => {
                   <div className="wakeonlan-lease-info">
                     <span className="wakeonlan-lease-name">{lease.hostname || lease['ip-address']}</span>
                     <div className="wakeonlan-lease-details">
-                      IP: {lease['ip-address']} | MAC: {lease['hw-address']}
+                      IP: {lease['ip-address']} | MAC: {maskMac(lease['hw-address'], anonymizeMacs)}
                     </div>
                   </div>
                   <Button variant="outline" onClick={() => handleAddFromLease(lease)} disabled={isLoading}>
