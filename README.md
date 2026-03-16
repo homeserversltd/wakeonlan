@@ -1,5 +1,7 @@
 # Wake on LAN Tab
 
+**Disclaimer:** This software is provided in pre-release form "as is" and "as available," without warranty of any kind. It may not operate correctly, may corrupt or delete data, and is not intended for production use. You use it at your own risk.
+
 Premium tab for sending Wake-on-LAN magic packets from the HOMESERVER UI. Use from phone over Tailscale for one-tap wake of workstation (or any target on the same LAN). Integrates with DHCP: show active leases and add or remove WoL targets from a single CSV.
 
 ## CSV location
