@@ -112,7 +112,7 @@ def add_target():
             broadcast = "255.255.255.255"
         ensure_csv_with_header()
         append_target(name, mac, broadcast)
-        current_app.logger.info("WoL target added", extra={"name": name, "mac": mac})
+        current_app.logger.info("WoL target added", extra={"target_name": name, "mac": mac})
         return jsonify({"success": True, "name": name, "mac": mac, "broadcast": broadcast})
     except ValueError as e:
         current_app.logger.warning("WoL add_target validation failed", extra={"error": str(e)})
@@ -125,14 +125,17 @@ def add_target():
 @bp.route("/targets/<name>", methods=["DELETE"])
 def delete_target(name):
     """Remove a WoL target by name from CSV."""
-    current_app.logger.info("WoL delete_target requested", extra={"name": name})
+    current_app.logger.info("WoL delete_target requested", extra={"target_name": name})
     try:
         remove_target(name)
         return jsonify({"success": True, "removed": name})
     except FileNotFoundError as e:
         return jsonify({"success": False, "error": str(e)}), 404
     except ValueError as e:
-        current_app.logger.warning("WoL delete_target not found", extra={"name": name, "error": str(e)})
+        current_app.logger.warning(
+            "WoL delete_target not found",
+            extra={"target_name": name, "error": str(e)},
+        )
         return jsonify({"success": False, "error": str(e)}), 404
     except Exception as e:
         current_app.logger.exception("WoL delete_target failed")

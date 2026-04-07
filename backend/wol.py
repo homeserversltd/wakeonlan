@@ -132,7 +132,10 @@ def wake_targets(targets: list[dict], names: list[str] | None = None, wake_all: 
 
     for t in to_wake:
         send_wol(t["mac"], t["broadcast"])
-        logger.info("Sent WoL", extra={"name": t["name"], "mac": t["mac_str"], "broadcast": t["broadcast"]})
+        logger.info(
+            "Sent WoL",
+            extra={"target_name": t["name"], "mac": t["mac_str"], "broadcast": t["broadcast"]},
+        )
     return to_wake
 
 
@@ -168,7 +171,7 @@ def append_target(name: str, mac: str, broadcast: str | None = None, csv_path: P
     name_clean = (name or mac).strip()
     with path.open("a", newline="", encoding="utf-8") as f:
         f.write(f"{name_clean},{':'.join(f'{b:02x}' for b in mac_bytes)},{bc}\n")
-    logger.info("Appended WoL target", extra={"name": name_clean, "mac": mac})
+    logger.info("Appended WoL target", extra={"target_name": name_clean, "mac": mac})
 
 
 def remove_target(name: str, csv_path: Path | None = None) -> None:
@@ -186,4 +189,4 @@ def remove_target(name: str, csv_path: Path | None = None) -> None:
         for t in targets:
             if t["name"] != name:
                 f.write(f"{t['name']},{t['mac_str']},{t['broadcast']}\n")
-    logger.info("Removed WoL target", extra={"name": name})
+    logger.info("Removed WoL target", extra={"target_name": name})
